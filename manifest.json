@@ -1,11 +1,20 @@
 {
-  "name": "Aura Match App",
-  "short_name": "AuraMatch",
-  "start_url": "index.html",
+  "name": "Farmar Aura",
+  "short_name": "Aura",
+  "description": "Aumente sua aura e desbloqueie a Aura Suprema.",
+  "start_url": "./index.html",
+  "scope": "./",
   "display": "standalone",
-  "background_color": "#0b0e14",
-  "theme_color": "#bb86fc",
+  "orientation": "portrait",
+  "background_color": "#090114",
+  "theme_color": "#9333ea",
+  "lang": "pt-BR",
   "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/1183/1183672.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
     {
       "src": "https://cdn-icons-png.flaticon.com/512/1183/1183672.png",
       "sizes": "512x512",

@@ -54,63 +54,56 @@ function handleMatch() {
     friendInput.value = '';
 }
 
-function successAura() {
-
-    let gain = 1;
-
-    if (Math.random() < 0.15) {
-
-        gain = 2;
-    }
-
-    const jackpot =
-        Math.random() < 0.01;
-
-    if (jackpot) {
-
-        gain += 10;
-    }
-
-    auraPercent += gain;
-
-    if (auraPercent > 100) {
-
-        auraPercent = 100;
-    }
-
-    localStorage.setItem(
-        'auraPercent',
-        auraPercent
-    );
+function supremeAura() {
 
     auraVisual.className =
-        'aura-circle success';
-
-    const size =
-        220 + auraPercent;
-
-    auraVisual.style.width =
-        size + 'px';
-
-    auraVisual.style.height =
-        size + 'px';
+        'aura-circle supreme';
 
     auraVisual.innerHTML = `
         <div class="aura-content">
 
             <h1 class="aura-percent">
-                0%
+                100%
             </h1>
+
+            <button id="share-aura-btn">
+                Compartilhar Aura
+            </button>
 
         </div>
     `;
 
-    animateAura(auraPercent);
+    auraVisual.style.width = '340px';
 
-    if (auraPercent >= 100) {
+    auraVisual.style.height = '340px';
 
-        supremeAura();
-    }
+    // =========================
+    // ESCONDER INPUTS
+    // =========================
+
+    const inputGroup =
+        document.querySelector(
+            '.input-group'
+        );
+
+    inputGroup.style.display = 'none';
+
+    // =========================
+    // BOTÃO SHARE
+    // =========================
+
+    const shareBtn =
+        document.getElementById(
+            'share-aura-btn'
+        );
+
+    shareBtn.addEventListener(
+        'click',
+        () => {
+
+            generateAuraCard();
+        }
+    );
 }
 
 function gameOver() {
