@@ -1,35 +1,28 @@
 const isInstagram =
-    navigator.userAgent
-        .toLowerCase()
-        .includes('instagram');
+    navigator.userAgent.toLowerCase().includes('instagram');
 
 if (isInstagram) {
 
-    const aviso =
-        document.createElement('div');
-
-    aviso.className =
-        'instagram-warning';
+    const aviso = document.createElement('div');
+    aviso.className = 'instagram-warning';
 
     aviso.innerHTML = `
         <p>
-            Para instalar o app,
-            abra no Chrome/Safari.
+            Você está acessando pelo Instagram.
+            Para instalar o app corretamente, abra no seu navegador (Chrome ou Safari).
         </p>
 
         <button id="open-browser">
-            Como instalar
+            Como abrir no navegador
         </button>
     `;
 
     document.body.prepend(aviso);
 
-    document
-        .getElementById('open-browser')
+    document.getElementById('open-browser')
         .addEventListener('click', () => {
-
             alert(
-                'Toque nos 3 pontos do Instagram e escolha "Abrir no navegador".'
+                'Toque nos 3 pontos ⋮ no Instagram e selecione "Abrir no navegador".'
             );
         });
 }
