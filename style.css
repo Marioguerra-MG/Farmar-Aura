@@ -1,0 +1,240 @@
+:root{
+    --bg-color:#0b0e14;
+    --card-bg:#1a1f29;
+    --primary:#bb86fc;
+    --secondary:#6200ea;
+    --error:#ff3b3b;
+    --text:#e1e1e1;
+}
+
+/* BODY */
+
+body{
+    margin:0;
+    padding:0;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background:var(--bg-color);
+    color:var(--text);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+}
+
+/* CARD */
+
+.container{
+    width:90%;
+    max-width:420px;
+    background:var(--card-bg);
+    padding:2rem;
+    border-radius:25px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.5);
+    text-align:center;
+}
+
+/* TÍTULO */
+
+h1{
+    color:var(--primary);
+    margin-bottom:5px;
+}
+
+p{
+    color:#9d9d9d;
+}
+
+/* AURA DISPLAY */
+
+.aura-display{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    margin-top:30px;
+    margin-bottom:30px;
+}
+
+/* TEXTO DO CÓDIGO */
+
+.my-aura-code{
+    color:white;
+    text-align:center;
+    font-size:16px;
+    margin-bottom:20px;
+    letter-spacing:1px;
+}
+
+.my-aura-code strong{
+    color:var(--primary);
+}
+
+/* CÍRCULO */
+
+.aura-circle{
+    width:220px;
+    height:220px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:0.5s;
+    animation:pulse 2s infinite;
+}
+
+/* ANIMAÇÃO */
+
+@keyframes pulse{
+
+    0%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.05);
+    }
+
+    100%{
+        transform:scale(1);
+    }
+}
+
+/* CONTEÚDO */
+
+.aura-content{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+}
+
+/* PORCENTAGEM */
+
+.aura-percent{
+    color:white;
+    font-size:60px;
+    margin:0;
+    font-weight:bold;
+}
+
+/* TEXTO GANHO */
+
+.gain-text{
+    color:#d8b4fe;
+    margin-top:8px;
+    font-size:14px;
+}
+
+/* AURA SUPREMA */
+
+.supreme-text{
+    color:gold;
+    font-size:20px;
+    margin-top:10px;
+    font-weight:bold;
+}
+
+/* GAME OVER */
+
+.game-over{
+    color:white;
+    margin:0;
+    font-size:42px;
+}
+
+.game-text{
+    color:white;
+    margin-top:10px;
+    font-size:14px;
+}
+
+/* INPUT */
+
+.input-group{
+    margin-top:30px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    text-align:left;
+}
+
+label{
+    font-size:15px;
+    color:#cfcfcf;
+}
+
+input{
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    background:#2c3341;
+    color:white;
+    font-size:1rem;
+    outline:none;
+    transition:0.3s;
+}
+
+input:focus{
+    border:1px solid var(--primary);
+    box-shadow:0 0 10px var(--primary);
+}
+
+/* BOTÃO */
+
+.btn-primary{
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(45deg,#9333ea,#6200ea);
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.btn-primary:hover{
+    transform:scale(1.03);
+    opacity:0.9;
+}
+
+/* ESTADO PADRÃO */
+
+.default{
+    background:radial-gradient(circle,
+    #3b0764 0%,
+    #240046 45%,
+    #000000 100%);
+
+    box-shadow:
+    0 0 20px #6200ea,
+    0 0 50px #6200ea;
+}
+
+/* SUCESSO */
+
+.success{
+    background:radial-gradient(circle,
+    #9333ea 0%,
+    #6200ea 45%,
+    #140021 100%);
+
+    box-shadow:
+    0 0 20px #9333ea,
+    0 0 50px #9333ea,
+    0 0 120px #9333ea;
+}
+
+/* GAME OVER */
+
+.fail{
+    background:radial-gradient(circle,
+    #ff0000 0%,
+    #600000 45%,
+    #000000 100%);
+
+    box-shadow:
+    0 0 20px red,
+    0 0 60px darkred,
+    0 0 120px red;
+}
