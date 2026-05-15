@@ -142,3 +142,23 @@ function gameOver() {
 
     }, 2500);
 }
+
+const shareAppBtn = document.getElementById('share-app-btn');
+
+if (shareAppBtn) {
+
+    shareAppBtn.addEventListener('click', () => {
+
+        const link = 'https://farmar-aura.vercel.app/';
+
+        const message =
+            `🔥 Vem testar seu nível de Aura no Farmar Aura!\n\n` +
+            `Desafie seus amigos e descubra quem tem mais energia ⚡\n\n` +
+            `${link}`;
+
+        const whatsappUrl =
+            `https://wa.me/?text=${encodeURIComponent(message)}`;
+
+        window.open(whatsappUrl, '_blank');
+    });
+}

@@ -1,290 +1,298 @@
-:root{
-    --bg-color:#0b0e14;
-    --card-bg:#1a1f29;
-    --primary:#bb86fc;
-    --secondary:#6200ea;
-    --error:#ff3b3b;
-    --text:#e1e1e1;
+:root {
+    --bg-color: #0b0e14;
+    --card-bg: #1a1f29;
+
+    --primary: #bb86fc;
+    --secondary: #6200ea;
+
+    --success: #25D366;
+    --error: #ff3b3b;
+
+    --text: #e1e1e1;
+    --muted: #9d9d9d;
+
+    --radius: 14px;
 }
-
-/* BODY */
-
-body{
-    margin:0;
-    padding:0;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background:var(--bg-color);
-    color:var(--text);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    min-height:100vh;
-}
-
-button{
-    cursor: pointer;
-}
-/* CARD */
-
-.container{
-    width:90%;
-    max-width:420px;
-    background:var(--card-bg);
-    padding:2rem;
-    border-radius:25px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.5);
-    text-align:center;
-}
-
-/* TÍTULO */
-
-h1{
-    color:var(--primary);
-    margin-bottom:5px;
-}
-
-p{
-    color:#9d9d9d;
-}
-
-/* AURA DISPLAY */
-
-.aura-display{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    margin-top:30px;
-    margin-bottom:30px;
-}
-
-/* TEXTO DO CÓDIGO */
-
-.my-aura-code{
-    color:white;
-    text-align:center;
-    font-size:16px;
-    margin-bottom:20px;
-    letter-spacing:1px;
-}
-
-.my-aura-code strong{
-    color:var(--primary);
-}
-
-/* CÍRCULO */
-
-.aura-circle{
-    width:220px;
-    height:220px;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    transition:0.5s;
-    animation:pulse 2s infinite;
-}
-
-/* ANIMAÇÃO */
-
-@keyframes pulse{
-
-    0%{
-        transform:scale(1);
-    }
-
-    50%{
-        transform:scale(1.05);
-    }
-
-    100%{
-        transform:scale(1);
-    }
-}
-
-/* CONTEÚDO */
-
-.aura-content{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-}
-
-/* PORCENTAGEM */
-
-.aura-percent{
-    color:white;
-    font-size:60px;
-    margin:0;
-    font-weight:bold;
-}
-
-/* TEXTO GANHO */
-
-.gain-text{
-    color:#d8b4fe;
-    margin-top:8px;
-    font-size:14px;
-}
-
-/* AURA SUPREMA */
-
-.supreme-text{
-    color:gold;
-    font-size:20px;
-    margin-top:10px;
-    font-weight:bold;
-}
-
-/* GAME OVER */
-
-.game-over{
-    color:white;
-    margin:0;
-    font-size:42px;
-}
-
-.game-text{
-    color:white;
-    margin-top:10px;
-    font-size:14px;
-}
-
-/* INPUT */
-
-.input-group{
-    margin-top:30px;
-    display:flex;
-    flex-direction:column;
-    gap:12px;
-    text-align:left;
-}
-
-label{
-    font-size:15px;
-    color:#cfcfcf;
-}
-
-input{
-    padding:14px;
-    border:none;
-    border-radius:12px;
-    background:#2c3341;
-    color:white;
-    font-size:1rem;
-    outline:none;
-    transition:0.3s;
-}
-
-input:focus{
-    border:1px solid var(--primary);
-    box-shadow:0 0 10px var(--primary);
-}
-
-/* BOTÃO */
-
-.btn-primary{
-    padding:14px;
-    border:none;
-    border-radius:12px;
-    background:linear-gradient(45deg,#9333ea,#6200ea);
-    color:white;
-    font-size:16px;
-    font-weight:bold;
-    cursor:pointer;
-    transition:0.3s;
-}
-
-.btn-primary:hover{
-    transform:scale(1.03);
-    opacity:0.9;
-}
-
-/* ESTADO PADRÃO */
-
-.default{
-    background:radial-gradient(circle,
-    #3b0764 0%,
-    #240046 45%,
-    #000000 100%);
-
-    box-shadow:
-    0 0 20px #6200ea,
-    0 0 50px #6200ea;
-}
-
-/* SUCESSO */
-
-.success{
-    background:radial-gradient(circle,
-    #9333ea 0%,
-    #6200ea 45%,
-    #140021 100%);
-
-    box-shadow:
-    0 0 20px #9333ea,
-    0 0 50px #9333ea,
-    0 0 120px #9333ea;
-}
-
-/* GAME OVER */
-
-.fail{
-    background:radial-gradient(circle,
-    #ff0000 0%,
-    #600000 45%,
-    #000000 100%);
-
-    box-shadow:
-    0 0 20px red,
-    0 0 60px darkred,
-    0 0 120px red;
-}
-
 
 /* =========================
-   BOTÃO COMPARTILHAR
+   BASE
 ========================= */
 
-#share-aura-btn {
+body {
+    margin: 0;
+    padding: 0;
 
-    margin-top: 25px;
-    padding: 14px 34px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
+    background: var(--bg-color);
+    color: var(--text);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 100vh;
+}
+
+button {
+    cursor: pointer;
+    font-family: inherit;
+}
+
+/* =========================
+   CARD PRINCIPAL
+========================= */
+
+.container {
+    width: 90%;
+    max-width: 420px;
+
+    background: var(--card-bg);
+    padding: 2rem;
+
+    border-radius: 25px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+
+    text-align: center;
+}
+
+/* =========================
+   TEXTOS
+========================= */
+
+h1 {
+    color: var(--primary);
+    margin-bottom: 5px;
+}
+
+p {
+    color: var(--muted);
+}
+
+/* =========================
+   AURA
+========================= */
+
+.aura-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin: 30px 0;
+}
+
+.my-aura-code {
+    color: white;
+    font-size: 16px;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.my-aura-code strong {
+    color: var(--primary);
+}
+
+/* =========================
+   CÍRCULO
+========================= */
+
+.aura-circle {
+    width: 220px;
+    height: 220px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: 0.5s;
+
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* =========================
+   CONTEÚDO
+========================= */
+
+.aura-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* =========================
+   PORCENTAGEM / TEXTO
+========================= */
+
+.aura-percent {
+    color: white;
+    font-size: 60px;
+    margin: 0;
+    font-weight: bold;
+}
+
+.gain-text {
+    color: #d8b4fe;
+    margin-top: 8px;
+    font-size: 14px;
+}
+
+.supreme-text {
+    color: gold;
+    font-size: 20px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.game-over {
+    color: white;
+    font-size: 42px;
+    margin: 0;
+}
+
+/* =========================
+   INPUTS
+========================= */
+
+.input-group {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: left;
+}
+
+label {
+    font-size: 15px;
+    color: #cfcfcf;
+}
+
+input {
+    padding: 14px;
     border: none;
-    border-radius: 14px;
+    border-radius: var(--radius);
 
-    background: linear-gradient(
-        135deg,
-        #7c3aed,
-        #9333ea
-    );
+    background: #2c3341;
+    color: white;
 
-    color: #ffffff;
+    font-size: 1rem;
+
+    outline: none;
+    transition: 0.3s;
+}
+
+input:focus {
+    box-shadow: 0 0 10px var(--primary);
+}
+
+/* =========================
+   BOTÕES PADRÃO (BASE)
+========================= */
+
+.btn-primary {
+    padding: 14px;
+    border: none;
+    border-radius: var(--radius);
+
+    background: linear-gradient(45deg, #9333ea, #6200ea);
+    color: white;
 
     font-size: 16px;
     font-weight: bold;
-    letter-spacing: 1px;
 
     cursor: pointer;
 
-    box-shadow:
-        0 0 15px rgba(147, 51, 234, 0.5),
-        0 0 40px rgba(147, 51, 234, 0.25);
-
-    transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease,
-        opacity 0.25s ease;
-
-    position: relative;
-    overflow: hidden;
+    transition: 0.25s;
 }
+
+.btn-primary:hover {
+    transform: scale(1.03);
+    opacity: 0.9;
+}
+
+/* =========================
+   BOTÃO COMPARTILHAR AURA
+========================= */
+
+#share-aura-btn {
+    margin-top: 20px;
+
+    padding: 14px 28px;
+
+    border: none;
+    border-radius: var(--radius);
+
+    background: linear-gradient(135deg, #7c3aed, #9333ea);
+
+    color: white;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow: 0 0 20px rgba(147, 51, 234, 0.4);
+
+    transition: 0.25s;
+}
+
+#share-aura-btn:hover {
+    transform: scale(1.05);
+}
+
+/* =========================
+   BOTÃO WHATSAPP (GLOBAL SHARE)
+========================= */
+
+#share-app-btn {
+    bottom: 20px;
+    right: 20px;
+
+    background: var(--success);
+    color: white;
+
+    border: none;
+    border-radius: 50px;
+
+    padding: 12px 16px;
+
+    font-weight: 600;
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+
+    z-index: 9999;
+
+    transition: 0.2s;
+}
+
+#share-app-btn:hover {
+    transform: scale(1.08);
+}
+
+/* =========================
+   IG OVERLAY (MODAL)
+========================= */
 
 .ig-overlay {
     position: fixed;
     inset: 0;
+
     background: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(8px);
 
@@ -302,15 +310,17 @@ input:focus{
     max-width: 340px;
 
     background: rgba(20, 20, 25, 0.95);
-    border: 1px solid rgba(255,255,255,0.08);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
 
     border-radius: 16px;
+
     padding: 20px;
 
-    color: white;
     text-align: center;
 
-    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+
     animation: pop 0.25s ease;
 }
 
@@ -327,41 +337,90 @@ input:focus{
 
 .ig-modal button {
     width: 100%;
+
     margin-top: 12px;
 
     padding: 12px;
+
     border: none;
-    border-radius: 10px;
+    border-radius: var(--radius);
 
     font-weight: 600;
+
     cursor: pointer;
 }
 
+/* Botão principal modal */
 #open-browser {
-    background: #9333ea;
+    background: var(--secondary);
     color: white;
 }
 
 #open-browser:hover {
-    background: #7e22ce;
+    opacity: 0.9;
 }
 
+/* botão secundário */
 .ig-modal .ghost {
     background: transparent;
     color: #bbb;
-    border: 1px solid rgba(255,255,255,0.1);
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .ig-modal .ghost:hover {
-    background: rgba(255,255,255,0.05);
+    background: rgba(255, 255, 255, 0.05);
 }
 
+/* =========================
+   ANIMAÇÕES
+========================= */
+
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 @keyframes pop {
-    from { transform: scale(0.9); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* =========================
+   ESTADOS AURA
+========================= */
+
+.default {
+    background: radial-gradient(circle, #3b0764 0%, #240046 45%, #000 100%);
+    box-shadow: 0 0 20px #6200ea, 0 0 50px #6200ea;
+}
+
+.success {
+    background: radial-gradient(circle, #9333ea 0%, #6200ea 45%, #140021 100%);
+    box-shadow: 0 0 20px #9333ea, 0 0 120px #9333ea;
+}
+
+.fail {
+    background: radial-gradient(circle, #ff0000 0%, #600000 45%, #000 100%);
+    box-shadow: 0 0 20px red, 0 0 120px red;
+}
+
+
+#grupoConvidr{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 }
