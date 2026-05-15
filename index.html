@@ -3,44 +3,107 @@
 
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Farmar Aura</title>
+
     <link rel="stylesheet" href="style.css">
+
     <link rel="manifest" href="manifest.json">
+
     <meta name="theme-color" content="#6200ea">
 </head>
 
 <body>
+
     <div class="container">
+
         <header>
+
             <h1>Farmar Aura</h1>
+
             <p>Aumente sua energia</p>
+
         </header>
 
         <main id="app">
-            <!-- Tela Inicial -->
+
+            <!-- TELA -->
+
             <section id="setup-screen" class="screen">
+
+                <!-- AURA -->
+
                 <div class="aura-display">
+
                     <div class="aura-circle" id="user-aura-visual"></div>
+
                 </div>
 
                 <hr>
 
+                <!-- INPUT -->
+
                 <div class="input-group">
-                    <label for="friend-code">Aura do Amigo:</label>
-                    <input type="text" id="friend-code" placeholder="Ex: AURA-1234">
-                    <button id="btn-match" class="btn-primary">Aumenta aura</button>
+
+                    <label for="friend-code">
+
+                        Aura do Amigo:
+
+                    </label>
+
+                    <input type="text" id="friend-code" placeholder="Ex: AURA-ABC123-999">
+
+                    <button id="btn-match" class="btn-primary">
+
+                        Aumentar Aura
+
+                    </button>
+
                 </div>
+
             </section>
+
+        </main>
 
     </div>
 
-    <script src="script.js"></script>
+    <!-- ========================= -->
+    <!-- JS SEPARADOS -->
+    <!-- ========================= -->
+
+    <script src="js/elements.js"></script>
+
+    <script src="js/storage.js"></script>
+
+    <script src="js/aura.js"></script>
+
+    <script src="js/ui.js"></script>
+
+    <script src="js/card.js"></script>
+
+    <script src="js/game.js"></script>
+
+    <script src="js/tests.js"></script>
+
+    <script src="js/app.js"></script>
+
+    <!-- ========================= -->
+    <!-- SERVICE WORKER -->
+    <!-- ========================= -->
+
     <script>
+
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('sw.js');
+
+            navigator
+                .serviceWorker
+                .register('sw.js');
         }
+
     </script>
+
 </body>
 
 </html>

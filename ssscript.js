@@ -61,10 +61,24 @@ document.addEventListener('DOMContentLoaded', () => {
         ) || [];
 
     // =========================
+    // INICIAR  updateAura();
+    // =========================
+
+    
+
+
+    // =========================
     // INICIAR
     // =========================
 
-    updateAura();
+    if (auraPercent >= 100) {
+
+        supremeAura();
+
+    } else {
+
+        updateAura();
+    }
 
     // =========================
     // BOTÃO
@@ -74,8 +88,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const friendCode =
             friendInput.value
-            .trim()
-            .toUpperCase();
+                .trim()
+                .toUpperCase();
 
         // VALIDAR
 
@@ -153,8 +167,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let randomPart = '';
 
-        // GERA 6 CARACTERES
-
         for (let i = 0; i < 6; i++) {
 
             randomPart +=
@@ -165,11 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 );
         }
 
-        // CHAVE SECRETA
-
         const secret = 'AURA-X';
-
-        // HASH
 
         let hash = 0;
 
@@ -181,14 +189,10 @@ document.addEventListener('DOMContentLoaded', () => {
             hash += full.charCodeAt(i);
         }
 
-        // ASSINATURA
-
         const signature =
             (hash % 999)
-            .toString()
-            .padStart(3, '0');
-
-        // CÓDIGO FINAL
+                .toString()
+                .padStart(3, '0');
 
         return `AURA-${randomPart}-${signature}`;
     }
@@ -199,9 +203,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function validateCode(code) {
 
-        // FORMATO:
-        // AURA-XXXXXX-999
-
         const regex =
             /^AURA-[A-Z0-9]{6}-\d{3}$/;
 
@@ -210,19 +211,13 @@ document.addEventListener('DOMContentLoaded', () => {
             return false;
         }
 
-        // DIVIDIR
-
         const parts = code.split('-');
 
         const randomPart = parts[1];
 
         const signature = parts[2];
 
-        // MESMA CHAVE
-
         const secret = 'AURA-X';
-
-        // HASH
 
         let hash = 0;
 
@@ -234,14 +229,10 @@ document.addEventListener('DOMContentLoaded', () => {
             hash += full.charCodeAt(i);
         }
 
-        // ASSINATURA ESPERADA
-
         const expected =
             (hash % 999)
-            .toString()
-            .padStart(3, '0');
-
-        // VALIDAÇÃO FINAL
+                .toString()
+                .padStart(3, '0');
 
         return signature === expected;
     }
@@ -260,8 +251,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let points = 0;
 
-        // COMPARA CARACTERES
-
         for (let i = 0; i < clean1.length; i++) {
 
             if (clean1[i] === clean2[i]) {
@@ -269,8 +258,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 points++;
             }
         }
-
-        // CHANCE RARA
 
         return points <= 2;
     }
@@ -281,18 +268,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function successAura() {
 
-        // GANHO DEVAGAR
-
         let gain = 1;
-
-        // 15% DE CHANCE DE +2
 
         if (Math.random() < 0.15) {
 
             gain = 2;
         }
-
-        // JACKPOT RARO
 
         const jackpot =
             Math.random() < 0.01;
@@ -309,19 +290,13 @@ document.addEventListener('DOMContentLoaded', () => {
             auraPercent = 100;
         }
 
-        // SALVAR
-
         localStorage.setItem(
             'auraPercent',
             auraPercent
         );
 
-        // VISUAL
-
         auraVisual.className =
             'aura-circle success';
-
-        // TAMANHO
 
         const size =
             220 + auraPercent;
@@ -331,8 +306,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         auraVisual.style.height =
             size + 'px';
-
-        // HTML
 
         auraVisual.innerHTML = `
             <div class="aura-content">
@@ -344,11 +317,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `;
 
-        // ANIMAR
-
         animateAura(auraPercent);
-
-        // AURA SUPREMA
 
         if (auraPercent >= 100) {
 
@@ -437,17 +406,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const interval =
             setInterval(() => {
 
-            current++;
+                current++;
 
-            percentElement.innerText =
-                current + '%';
+                percentElement.innerText =
+                    current + '%';
 
-            if (current >= target) {
+                if (current >= target) {
 
-                clearInterval(interval);
-            }
+                    clearInterval(interval);
+                }
 
-        }, 25);
+            }, 25);
     }
 
     // =========================
@@ -466,12 +435,293 @@ document.addEventListener('DOMContentLoaded', () => {
                     100%
                 </h1>
 
+                <button id="share-aura-btn">
+                    Compartilhar Aura
+                </button>
+
             </div>
         `;
 
         auraVisual.style.width = '340px';
 
         auraVisual.style.height = '340px';
+
+        const shareBtn =
+            document.getElementById(
+                'share-aura-btn'
+            );
+
+        shareBtn.addEventListener('click', () => {
+
+            generateAuraCard();
+        });
     }
 
+    // =========================
+    // GERAR CARD
+    // =========================
+
+    function generateAuraCard() {
+
+    const canvas =
+        document.createElement('canvas');
+
+    canvas.width = 1080;
+    canvas.height = 1350;
+
+    const ctx =
+        canvas.getContext('2d');
+
+    // =========================
+    // FUNDO
+    // =========================
+
+    const gradient =
+        ctx.createLinearGradient(
+            0,
+            0,
+            1080,
+            1350
+        );
+
+    gradient.addColorStop(0, '#0f051d');
+    gradient.addColorStop(0.5, '#240046');
+    gradient.addColorStop(1, '#000000');
+
+    ctx.fillStyle = gradient;
+
+    ctx.fillRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+    // =========================
+    // PARTÍCULAS
+    // =========================
+
+    for (let i = 0; i < 120; i++) {
+
+        const x =
+            Math.random() * 1080;
+
+        const y =
+            Math.random() * 1350;
+
+        const size =
+            Math.random() * 4;
+
+        ctx.beginPath();
+
+        ctx.arc(
+            x,
+            y,
+            size,
+            0,
+            Math.PI * 2
+        );
+
+        ctx.fillStyle =
+            'rgba(255,255,255,0.5)';
+
+        ctx.fill();
+    }
+
+    // =========================
+    // AURA GIGANTE
+    // =========================
+
+    const auraGradient =
+        ctx.createRadialGradient(
+            540,
+            420,
+            100,
+            540,
+            420,
+            280
+        );
+
+    auraGradient.addColorStop(
+        0,
+        '#d8b4fe'
+    );
+
+    auraGradient.addColorStop(
+        0.4,
+        '#9333ea'
+    );
+
+    auraGradient.addColorStop(
+        1,
+        '#3b0764'
+    );
+
+    ctx.beginPath();
+
+    ctx.arc(
+        540,
+        420,
+        230,
+        0,
+        Math.PI * 2
+    );
+
+    ctx.fillStyle =
+        auraGradient;
+
+    ctx.shadowColor =
+        '#c084fc';
+
+    ctx.shadowBlur = 120;
+
+    ctx.fill();
+
+    // =========================
+    // TEXTO 100%
+    // =========================
+
+    ctx.shadowBlur = 0;
+
+    ctx.fillStyle = '#ffffff';
+
+    ctx.font =
+        'bold 140px Arial';
+
+    ctx.textAlign = 'center';
+
+    ctx.fillText(
+        '100%',
+        540,
+        470
+    );
+
+    // =========================
+    // TÍTULO
+    // =========================
+
+    ctx.fillStyle = '#ffd700';
+
+    ctx.font =
+        'bold 72px Arial';
+
+    ctx.fillText(
+        'AURA SUPREMA',
+        540,
+        820
+    );
+
+    // =========================
+    // SUBTEXTO
+    // =========================
+
+    ctx.fillStyle =
+        '#d8b4fe';
+
+    ctx.font =
+        '38px Arial';
+
+    ctx.fillText(
+        'Você alcançou o nível máximo',
+        540,
+        900
+    );
+
+    // =========================
+    // LINHA
+    // =========================
+
+    ctx.strokeStyle =
+        'rgba(255,255,255,0.2)';
+
+    ctx.lineWidth = 3;
+
+    ctx.beginPath();
+
+    ctx.moveTo(240, 980);
+
+    ctx.lineTo(840, 980);
+
+    ctx.stroke();
+
+    // =========================
+    // CÓDIGO
+    // =========================
+
+    ctx.fillStyle = '#ffffff';
+
+    ctx.font =
+        'bold 42px Arial';
+
+    ctx.fillText(
+        myAuraCode,
+        540,
+        1060
+    );
+
+    // =========================
+    // RODAPÉ
+    // =========================
+
+    ctx.fillStyle =
+        'rgba(255,255,255,0.5)';
+
+    ctx.font =
+        '30px Arial';
+
+    ctx.fillText(
+        'Farmar Aura',
+        540,
+        1240
+    );
+
+    // =========================
+    // DOWNLOAD
+    // =========================
+
+    const link =
+        document.createElement('a');
+
+    link.download =
+        'aura-suprema.png';
+
+    link.href =
+        canvas.toDataURL('image/png');
+
+    link.click();
+}
+
 });
+
+// =========================
+// TESTES
+// =========================
+
+// IR PARA 100%
+
+window.maxAura = () => {
+
+    localStorage.setItem(
+        'auraPercent',
+        100
+    );
+
+    location.reload();
+};
+
+// RESETAR
+
+window.resetAura = () => {
+
+    localStorage.setItem(
+        'auraPercent',
+        0
+    );
+
+    localStorage.setItem(
+        'usedCodes',
+        JSON.stringify([])
+    );
+
+    location.reload();
+};

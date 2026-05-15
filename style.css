@@ -21,6 +21,9 @@ body{
     min-height:100vh;
 }
 
+button{
+    cursor: pointer;
+}
 /* CARD */
 
 .container{
@@ -237,4 +240,44 @@ input:focus{
     0 0 20px red,
     0 0 60px darkred,
     0 0 120px red;
+}
+
+
+/* =========================
+   BOTÃO COMPARTILHAR
+========================= */
+
+#share-aura-btn {
+
+    margin-top: 25px;
+    padding: 14px 34px;
+
+    border: none;
+    border-radius: 14px;
+
+    background: linear-gradient(
+        135deg,
+        #7c3aed,
+        #9333ea
+    );
+
+    color: #ffffff;
+
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 15px rgba(147, 51, 234, 0.5),
+        0 0 40px rgba(147, 51, 234, 0.25);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        opacity 0.25s ease;
+
+    position: relative;
+    overflow: hidden;
 }
