@@ -3,26 +3,37 @@ const isInstagram =
 
 if (isInstagram) {
 
-    const aviso = document.createElement('div');
-    aviso.className = 'instagram-warning';
+    const overlay = document.createElement('div');
+    overlay.className = 'ig-overlay';
 
-    aviso.innerHTML = `
-        <p>
-            Você está acessando pelo Instagram.
-            Para instalar o app corretamente, abra no seu navegador (Chrome ou Safari).
-        </p>
+    overlay.innerHTML = `
+        <div class="ig-modal">
+            
+            <h2>⚠️ Abra no navegador</h2>
 
-        <button id="open-browser">
-            Como abrir no navegador
-        </button>
+            <p>
+                Você está acessando pelo Instagram.<br>
+                Para instalar o app corretamente, abra no <strong>Chrome</strong> ou <strong>Safari</strong>.
+            </p>
+
+            <button id="open-browser">
+                Como abrir
+            </button>
+
+            <button id="close-modal" class="ghost">
+                Agora não
+            </button>
+
+        </div>
     `;
 
-    document.body.prepend(aviso);
+    document.body.appendChild(overlay);
 
-    document.getElementById('open-browser')
-        .addEventListener('click', () => {
-            alert(
-                'Toque nos 3 pontos ⋮ no Instagram e selecione "Abrir no navegador".'
-            );
-        });
+    document.getElementById('open-browser').addEventListener('click', () => {
+        alert('Toque nos 3 pontos ⋮ no Instagram e escolha "Abrir no navegador".');
+    });
+
+    document.getElementById('close-modal').addEventListener('click', () => {
+        overlay.remove();
+    });
 }
