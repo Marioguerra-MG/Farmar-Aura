@@ -3,6 +3,8 @@ const isInstagram =
 
 if (isInstagram) {
 
+    const link = 'https://farmar-aura.vercel.app/';
+
     const overlay = document.createElement('div');
     overlay.className = 'ig-overlay';
 
@@ -13,11 +15,11 @@ if (isInstagram) {
 
             <p>
                 Você está acessando pelo Instagram.<br>
-                Para instalar o app corretamente, abra no <strong>Chrome</strong> ou <strong>Safari</strong>.
+                Para continuar, abra no <strong>Chrome</strong> ou <strong>Safari</strong>.
             </p>
 
             <button id="open-browser">
-                Como abrir
+                📋 Copiar link e instruções
             </button>
 
             <button id="close-modal" class="ghost">
@@ -29,8 +31,20 @@ if (isInstagram) {
 
     document.body.appendChild(overlay);
 
-    document.getElementById('open-browser').addEventListener('click', () => {
-        alert('Toque nos 3 pontos ⋮ no Instagram e escolha "Abrir no navegador".');
+    document.getElementById('open-browser').addEventListener('click', async () => {
+
+        try {
+            await navigator.clipboard.writeText(link);
+
+            alert(
+                `✔ Link copiado!\n\nAgora:\n1. Abra o Chrome ou Safari\n2. Cole o link\n\n${link}`
+            );
+
+        } catch (err) {
+            alert(
+                `Copie manualmente:\n\n${link}\n\nDepois abra no Chrome ou Safari.`
+            );
+        }
     });
 
     document.getElementById('close-modal').addEventListener('click', () => {
