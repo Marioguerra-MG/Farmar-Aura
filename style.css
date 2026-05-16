@@ -1,426 +1,206 @@
 :root {
-    --bg-color: #0b0e14;
-    --card-bg: #1a1f29;
-
-    --primary: #bb86fc;
-    --secondary: #6200ea;
-
-    --success: #25D366;
-    --error: #ff3b3b;
-
-    --text: #e1e1e1;
-    --muted: #9d9d9d;
-
-    --radius: 14px;
+    --bg-color: #0d0e12;
+    --card-bg: #161822;
+    --text-color: #ffffff;
+    --aura-purple: #8b5cf6;
+    --aura-green: #10b981;
+    --aura-gold: #f59e0b;
+    --aura-fail: #ef4444;
 }
 
-/* =========================
-   BASE
-========================= */
-
-body {
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
 
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
-    background: var(--bg-color);
-    color: var(--text);
-
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
     display: flex;
     justify-content: center;
     align-items: center;
-
     min-height: 100vh;
+    padding: 20px;
 }
 
-button {
-    cursor: pointer;
-    font-family: inherit;
-}
-
-/* =========================
-   CARD PRINCIPAL
-========================= */
-
-.container {
-    width: 90%;
-    max-width: 420px;
-
+.app-container {
     background: var(--card-bg);
-    padding: 2rem;
-
-    border-radius: 25px;
-
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-
+    width: 100%;
+    max-width: 420px;
+    border-radius: 24px;
+    padding: 30px 20px;
     text-align: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    border: 1px solid #26293a;
 }
 
-/* =========================
-   TEXTOS
-========================= */
-
-h1 {
-    color: var(--primary);
-    margin-bottom: 5px;
+header h1 {
+    font-size: 2rem;
+    letter-spacing: 2px;
+    background: linear-gradient(45deg, #ff007f, var(--aura-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-p {
-    color: var(--muted);
+.subtitle {
+    font-size: 0.85rem;
+    color: #8e94a6;
+    margin-top: 5px;
+    margin-bottom: 25px;
 }
 
-/* =========================
-   AURA
-========================= */
-
-.aura-display {
+/* CONTAINER DA AURA DINÂMICA */
+.aura-wrapper {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-
     margin: 30px 0;
+    min-height: 260px;
 }
-
-.my-aura-code {
-    color: white;
-    font-size: 16px;
-    margin-bottom: 20px;
-    letter-spacing: 1px;
-}
-
-.my-aura-code strong {
-    color: var(--primary);
-}
-
-/* =========================
-   CÍRCULO
-========================= */
 
 .aura-circle {
     width: 220px;
     height: 220px;
-
     border-radius: 50%;
-
+    background: radial-gradient(circle, rgba(22,24,34,1) 50%, rgba(139,92,246,0.1) 100%);
+    border: 6px solid var(--aura-purple);
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.4);
     display: flex;
-    align-items: center;
     justify-content: center;
-
-    transition: 0.5s;
-
-    animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.05);
-    }
-
-    100% {
-        transform: scale(1);
-    }
-}
-
-/* =========================
-   CONTEÚDO
-========================= */
-
-.aura-content {
-    display: flex;
-    flex-direction: column;
     align-items: center;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation: pulseAura 3s infinite alternate;
 }
 
-/* =========================
-   PORCENTAGEM / TEXTO
-========================= */
-
-.aura-percent {
-    color: white;
-    font-size: 60px;
-    margin: 0;
-    font-weight: bold;
+.aura-content h2 {
+    font-size: 3rem;
+    font-weight: 800;
 }
 
-.gain-text {
-    color: #d8b4fe;
-    margin-top: 8px;
-    font-size: 14px;
+.aura-status-label {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #a0aec0;
 }
 
-.supreme-text {
-    color: gold;
-    font-size: 20px;
-    margin-top: 10px;
-    font-weight: bold;
+/* VARIADORES DE ESTADO DA AURA */
+.aura-circle.success {
+    border-color: var(--aura-green);
+    box-shadow: 0 0 40px rgba(16, 185, 129, 0.6);
+    background: radial-gradient(circle, #161822 50%, rgba(16, 185, 129, 0.15) 100%);
 }
 
-.game-over {
-    color: white;
-    font-size: 42px;
-    margin: 0;
+.aura-circle.supreme {
+    border-color: var(--aura-gold);
+    box-shadow: 0 0 60px rgba(245, 158, 11, 0.8);
+    background: radial-gradient(circle, #161822 40%, rgba(245, 158, 11, 0.25) 100%);
+    animation: supremeGlow 1s infinite alternate;
 }
 
-/* =========================
-   INPUTS
-========================= */
+.aura-circle.fail {
+    border-color: var(--aura-fail);
+    box-shadow: 0 0 40px rgba(239, 68, 68, 0.6);
+    animation: shake 0.4s ease-in-out;
+}
 
+/* INPUTS E BOTÕES */
 .input-group {
-    margin-top: 30px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+    margin-top: 20px;
     text-align: left;
 }
 
-label {
-    font-size: 15px;
-    color: #cfcfcf;
+.instruction {
+    font-size: 0.85rem;
+    color: #a0aec0;
+    margin-bottom: 8px;
+    padding-left: 5px;
 }
 
-input {
+.input-row {
+    display: flex;
+    gap: 10px;
+}
+
+input[type="text"] {
+    flex: 1;
+    background: #0d0e12;
+    border: 2px solid #26293a;
     padding: 14px;
-    border: none;
-    border-radius: var(--radius);
-
-    background: #2c3341;
-    color: white;
-
-    font-size: 1rem;
-
+    border-radius: 12px;
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-align: center;
     outline: none;
     transition: 0.3s;
 }
 
-input:focus {
-    box-shadow: 0 0 10px var(--primary);
+input[type="text"]:focus {
+    border-color: var(--aura-purple);
 }
 
-/* =========================
-   BOTÕES PADRÃO (BASE)
-========================= */
-
-.btn-primary {
-    padding: 14px;
+button {
+    background: var(--aura-purple);
+    color: #fff;
     border: none;
-    border-radius: var(--radius);
-
-    background: linear-gradient(45deg, #9333ea, #6200ea);
-    color: white;
-
-    font-size: 16px;
-    font-weight: bold;
-
+    padding: 14px 20px;
+    border-radius: 12px;
+    font-weight: 700;
     cursor: pointer;
-
-    transition: 0.25s;
-}
-
-.btn-primary:hover {
-    transform: scale(1.03);
-    opacity: 0.9;
-}
-
-/* =========================
-   BOTÃO COMPARTILHAR AURA
-========================= */
-
-#share-aura-btn {
-    margin-top: 20px;
-
-    padding: 14px 28px;
-
-    border: none;
-    border-radius: var(--radius);
-
-    background: linear-gradient(135deg, #7c3aed, #9333ea);
-
-    color: white;
-
-    font-size: 15px;
-    font-weight: bold;
-
-    cursor: pointer;
-
-    box-shadow: 0 0 20px rgba(147, 51, 234, 0.4);
-
-    transition: 0.25s;
-}
-
-#share-aura-btn:hover {
-    transform: scale(1.05);
-}
-
-/* =========================
-   BOTÃO WHATSAPP (GLOBAL SHARE)
-========================= */
-
-#share-app-btn {
-    bottom: 20px;
-    right: 20px;
-
-    background: var(--success);
-    color: white;
-
-    border: none;
-    border-radius: 50px;
-
-    padding: 12px 16px;
-
-    font-weight: 600;
-
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
-
-    z-index: 9999;
-
     transition: 0.2s;
 }
 
-#share-app-btn:hover {
-    transform: scale(1.08);
-}
-
-/* =========================
-   IG OVERLAY (MODAL)
-========================= */
-
-.ig-overlay {
-    position: fixed;
-    inset: 0;
-
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(8px);
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    z-index: 99999;
-
-    animation: fadeIn 0.25s ease;
-}
-
-.ig-modal {
-    width: 90%;
-    max-width: 340px;
-
-    background: rgba(20, 20, 25, 0.95);
-
-    border: 1px solid rgba(255, 255, 255, 0.08);
-
-    border-radius: 16px;
-
-    padding: 20px;
-
-    text-align: center;
-
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-
-    animation: pop 0.25s ease;
-}
-
-.ig-modal h2 {
-    margin: 0 0 10px;
-    font-size: 18px;
-}
-
-.ig-modal p {
-    font-size: 14px;
-    opacity: 0.85;
-    line-height: 1.5;
-}
-
-.ig-modal button {
-    width: 100%;
-
-    margin-top: 12px;
-
-    padding: 12px;
-
-    border: none;
-    border-radius: var(--radius);
-
-    font-weight: 600;
-
-    cursor: pointer;
-}
-
-/* Botão principal modal */
-#open-browser {
-    background: var(--secondary);
-    color: white;
-}
-
-#open-browser:hover {
+button:hover {
     opacity: 0.9;
+    transform: translateY(-2px);
 }
 
-/* botão secundário */
-.ig-modal .ghost {
-    background: transparent;
-    color: #bbb;
-
-    border: 1px solid rgba(255, 255, 255, 0.1);
+.btn-secondary {
+    background: #26293a;
+    width: 100%;
+    margin-top: 25px;
+    border: 1px solid #363a52;
 }
 
-.ig-modal .ghost:hover {
-    background: rgba(255, 255, 255, 0.05);
+.my-aura-code {
+    background: #0d0e12;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    border: 1px dashed #363a52;
 }
 
-/* =========================
-   ANIMAÇÕES
-========================= */
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
+.my-aura-code strong {
+    color: var(--aura-purple);
+    margin-left: 5px;
 }
 
-@keyframes pop {
-    from {
-        transform: scale(0.9);
-        opacity: 0;
-    }
-
-    to {
-        transform: scale(1);
-        opacity: 1;
-    }
+#share-aura-btn {
+    background: var(--aura-gold);
+    color: #000;
+    font-size: 0.8rem;
+    padding: 6px 12px;
+    margin-top: 8px;
+    border-radius: 6px;
 }
 
-/* =========================
-   ESTADOS AURA
-========================= */
-
-.default {
-    background: radial-gradient(circle, #3b0764 0%, #240046 45%, #000 100%);
-    box-shadow: 0 0 20px #6200ea, 0 0 50px #6200ea;
+/* ANIMAÇÕES */
+@keyframes pulseAura {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.04); }
 }
 
-.success {
-    background: radial-gradient(circle, #9333ea 0%, #6200ea 45%, #140021 100%);
-    box-shadow: 0 0 20px #9333ea, 0 0 120px #9333ea;
+@keyframes supremeGlow {
+    0% { box-shadow: 0 0 30px rgba(245, 158, 11, 0.5); }
+    100% { box-shadow: 0 0 65px rgba(245, 158, 11, 0.9); transform: scale(1.06); }
 }
 
-.fail {
-    background: radial-gradient(circle, #ff0000 0%, #600000 45%, #000 100%);
-    box-shadow: 0 0 20px red, 0 0 120px red;
-}
-
-
-#grupoConvidr{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-8px); }
+    75% { transform: translateX(8px); }
 }

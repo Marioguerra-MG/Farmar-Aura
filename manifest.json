@@ -1,14 +1,11 @@
 {
-  "name": "Farmar Aura",
-  "short_name": "Aura",
-  "description": "Aumente sua aura e desbloqueie a Aura Suprema.",
-  "start_url": "./index.html",
-  "scope": "./",
+ "name": "Farmar Aura",
+  "short_name": "FarmarAura",
+  "start_url": "/",
   "display": "standalone",
+  "background_color": "#0d0e12",
+  "theme-color": "#0d0e12",
   "orientation": "portrait",
-  "background_color": "#090114",
-  "theme_color": "#9333ea",
-  "lang": "pt-BR",
   "icons": [
     {
       "src": "./images/icon-192.png",

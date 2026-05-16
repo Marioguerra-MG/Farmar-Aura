@@ -1,125 +1,54 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="pt-BR">
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Farmar Aura</title>
-
-    <meta name="theme-color" content="#6200ea">
-
-    <meta name="mobile-web-app-capable" content="yes">
-
-    <meta name="apple-mobile-web-app-capable" content="yes">
-
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-    <meta name="apple-mobile-web-app-title" content="Farmar Aura">
-
-    <link rel="manifest" href="manifest.json">
-
+    <title>Farmar Aura ⚡</title>
     <link rel="stylesheet" href="style.css">
-
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0d0e12">
 </head>
-
 <body>
 
-    <div class="container">
-
+    <div class="app-container">
         <header>
-
-            <h1>Farmar Aura</h1>
-
-            <p>Aumente sua energia</p>
-
-
+            <h1>⚡ FARMAR AURA</h1>
+            <p class="subtitle">Absorva a energia dos seus amigos e alcance o nível Supremo.</p>
         </header>
 
-        <main id="app">
-
-            <!-- TELA -->
-
-            <section id="setup-screen" class="screen">
-
-                <!-- AURA -->
-
-                <div class="aura-display">
-
-                    <div class="aura-circle" id="user-aura-visual"></div>
-
+        <!-- CÍRCULO CENTRAL DA AURA -->
+        <div class="aura-wrapper">
+            <div id="aura-visual" class="aura-circle">
+                <div class="aura-content">
+                    <h2 id="aura-text-percent">0%</h2>
+                    <span id="aura-status-label">Aura Inicial</span>
                 </div>
+            </div>
+        </div>
 
-                <hr>
+        <!-- SEÇÃO DE INPUTS / INTERAÇÃO -->
+        <div id="input-group" class="input-group">
+            <p class="instruction">Cole o código de aura de um amigo para absorver:</p>
+            <div class="input-row">
+                <input type="text" id="friend-code-input" placeholder="AURA-XXXXXX-XXX" autocomplete="off">
+                <button id="btn-match">ABSORVER</button>
+            </div>
+        </div>
 
-                <!-- INPUT -->
-
-                <div class="input-group">
-
-                    <label for="friend-code" id="grupoConvidr">
-
-                        Aura do Amigo
-
-                            <button id="share-app-btn" class="whatsapp-btn">
-                                📲 Convidar amigos
-                            </button>
-                    </label>
-
-                    <input type="text" id="friend-code" placeholder="Ex: AURA-ABC123-999">
-
-                    <button id="btn-match" class="btn-primary">
-
-                        Aumentar Aura
-
-                    </button>
-
-                </div>
-
-            </section>
-
-        </main>
-
+        <!-- RODAPÉ E BOTÕES DE COMPARTILHAMENTO -->
+        <footer>
+            <div class="share-zone">
+                <button id="share-app-btn" class="btn-secondary">📢 Convidar Amigos (WhatsApp)</button>
+            </div>
+        </footer>
     </div>
 
-    <!-- ========================= -->
-    <!-- JS SEPARADOS -->
-    <!-- ========================= -->
-
-    <script src="js/elements.js"></script>
-
-    <script src="js/storage.js"></script>
-
-    <script src="js/aura.js"></script>
-
-    <script src="js/ui.js"></script>
-
-    <script src="js/card.js"></script>
-
-    <script src="js/game.js"></script>
-    <!--
-    <script src="js/tests.js"></script>
-    -->
-    <script src="js/instagram.js"></script>
-
-    <script src="js/app.js"></script>
-
-    <!-- ========================= -->
-    <!-- SERVICE WORKER -->
-    <!-- ========================= -->
-
+    <script src="app.js"></script>
     <script>
-
+        // Registro do Service Worker para o app funcionar offline (PWA)
         if ('serviceWorker' in navigator) {
-
-            navigator
-                .serviceWorker
-                .register('sw.js');
+            navigator.serviceWorker.register('/sw.js').catch(err => console.log("Erro SW:", err));
         }
-
     </script>
-
 </body>
-
 </html>
