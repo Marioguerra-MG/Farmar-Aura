@@ -5,7 +5,7 @@ const auraStatusLabel = document.getElementById('aura-status-label');
 const friendInput = document.getElementById('friend-code-input');
 const btnMatch = document.getElementById('btn-match');
 
-// EstadosGlobais sincronizados com o LocalStorage
+// Estados Globais sincronizados com o LocalStorage
 let myAuraCode = localStorage.getItem('userAuraCode') || '';
 let auraPercent = parseInt(localStorage.getItem('auraPercent')) || 0;
 let usedCodes = JSON.parse(localStorage.getItem('usedCodes')) || [];
@@ -30,6 +30,26 @@ function initApp() {
     // 4. Configuração dos Eventos
     btnMatch.addEventListener('click', handleMatch);
     friendInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleMatch(); });
+
+    // MELHORIA UX: Formatação automática e Letras Maiúsculas em tempo real
+    friendInput.addEventListener('input', (e) => {
+        let value = e.target.value.toUpperCase().replace(/[^A-Z0-9-]/g, '');
+        
+        // Se o usuário digitar/colar apenas os 6 caracteres do meio sem o "AURA-"
+        if (value.length === 6 && !value.includes('-')) {
+            value = `AURA-${value}-`;
+        } 
+        // Se colar o código corrido sem traços (ex: AURATR7K9M412)
+        else if (value.startsWith('AURA') && value.length > 4 && !value.includes('-')) {
+            const clean = value.replace('AURA', '');
+            const part1 = clean.substring(0, 6);
+            const part2 = clean.substring(6, 9);
+            value = `AURA-${part1}`;
+            if (part2) value += `-${part2}`;
+        }
+
+        e.target.value = value;
+    });
 }
 
 // Mecanismo de Geração Criptográfica Simples de Código
@@ -85,10 +105,21 @@ function checkCompatibility(code1, code2) {
 
 // Gerenciador do Clique de Absorção
 function handleMatch() {
-    const friendCode = friendInput.value.trim().toUpperCase();
+    let friendCode = friendInput.value.trim().toUpperCase();
+
+    // AUTO-COMPLETE SEGUNDA CAMADA: Se o cara digitou só o miolo de 6 dígitos mesmo após o input event
+    if (/^[A-Z0-9]{6}$/.test(friendCode)) {
+        alert('Detectamos o código reduzido. Formatando automaticamente...');
+        // Como não temos a assinatura original por ser apenas 6 dígitos, tentamos validar gerando uma assinatura temporária baseada nas regras do app
+        let hash = 0;
+        const full = friendCode + 'AURA-X';
+        for (let i = 0; i < full.length; i++) { hash += full.charCodeAt(i); }
+        const signature = (hash % 999).toString().padStart(3, '0');
+        friendCode = `AURA-${friendCode}-${signature}`;
+    }
 
     if (!validateCode(friendCode)) {
-        alert('Código inválido ou inexistente!');
+        alert('Código inválido ou incompleto! Certifique-se de usar o padrão AURA-XXXXXX-XXX');
         return;
     }
     if (friendCode === myAuraCode) {
@@ -166,7 +197,8 @@ function triggerGameOver() {
 const shareAppBtn = document.getElementById('share-app-btn');
 if (shareAppBtn) {
     shareAppBtn.addEventListener('click', () => {
-        const urlApp = window.location.href; // Captura o link dinamicamente (Vercel/Local)
+        const urlApp = 'https://farmar-aura.vercel.app/'; 
+        
         const mensagem = 
             `⚡ Ei! Qual é o nível da sua Aura?\n\n` +
             `Entra aí no app, copia seu código e me manda pra ver nossa compatibilidade! Meu código é: ${myAuraCode}\n\n` +
